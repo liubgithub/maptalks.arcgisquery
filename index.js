@@ -13,15 +13,15 @@
     return xml;
 };*/
 
-let parseQueryString = function (option) {
-    var queryString = 'wfs?VERSION=1.0.0&REQUEST=GetFeature&SERVICE=WFS';
-    var condition = {
+const parseQueryString = function (option) {
+    let queryString = 'wfs?VERSION=1.0.0&REQUEST=GetFeature&SERVICE=WFS';
+    const condition = {
         TYPENAME: option.TYPENAME,
         FILTER:option.FILTER || ''
     };
-    for (var p in condition) {
+    for (const p in condition) {
         if (p) {
-          queryString += '&' + p + '=' + encodeURIComponent(condition[p]);
+            queryString += '&' + p + '=' + encodeURIComponent(condition[p]);
         }
     }
     queryString += '&RESULTTYPE=result';
@@ -35,15 +35,15 @@ export class QueryTask extends maptalks.Class {
         this.option = option || {};
         this.excute = function (callback) {
             if (!this.validUrl(this.serverUrl)) return;
-            var _url = this.checkUrl(this.serverUrl);
-            var proxyUrl = this.option.proxy || '../proxy/proxy.ashx';
-            var requestUrl = proxyUrl;
-            var filter = parseQueryString(this.option);
+            const _url = this.checkUrl(this.serverUrl);
+            const proxyUrl = this.option.proxy || '../proxy/proxy.ashx';
+            const requestUrl = proxyUrl;
+            const filter = parseQueryString(this.option);
             maptalks.Ajax.post({
                 url: requestUrl
             }, 'url=' + encodeURIComponent(_url) + '&filter=' +  filter, function (err, res) {
                 if (err) return;
-                var _result = null;
+                let _result = null;
                 try {
                     _result = maptalks.Util.parseJSON(res);
                 } catch (ex) {
