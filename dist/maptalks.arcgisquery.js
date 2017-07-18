@@ -1,7 +1,10 @@
 /*!
- * maptalks.arcgisquery v1.0.3
+ * maptalks.arcgisquery v1.0.4
  * LICENSE : MIT
  * (c) 2016-2017 maptalks.org
+ */
+/*!
+ * requires maptalks@^0.25.0 
  */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('maptalks')) :
@@ -37,7 +40,9 @@ var parseQueryString = function parseQueryString(option) {
         FILTER: option.FILTER || ''
     };
     for (var p in condition) {
-        queryString += '&' + p + '=' + encodeURIComponent(condition[p]);
+        if (p) {
+            queryString += '&' + p + '=' + encodeURIComponent(condition[p]);
+        }
     }
     queryString += '&RESULTTYPE=result';
     return queryString;
@@ -96,5 +101,7 @@ var QueryTask = function (_maptalks$Class) {
 exports.QueryTask = QueryTask;
 
 Object.defineProperty(exports, '__esModule', { value: true });
+
+typeof console !== 'undefined' && console.log('maptalks.arcgisquery v1.0.4, requires maptalks@^0.25.0.');
 
 })));
