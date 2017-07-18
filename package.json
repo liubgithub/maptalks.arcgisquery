@@ -1,13 +1,13 @@
 {
-  "name": "maptalks.heatmap",
-  "version": "0.5.0",
-  "description": "A heatmap layer plugin for maptalks.js. ",
+  "name": "maptalks.arcgisquery",
+  "version": "1.0.4",
+  "description": "A arcgisquery layer plugin for maptalks.js. ",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/maptalks/maptalks.heatmap.git"
+    "url": "https://github.com/maptalks/maptalks.arcgisquery.git"
   },
-  "main": "dist/maptalks.heatmap.js",
+  "main": "dist/maptalks.arcgisquery.js",
   "scripts": {
     "preversion": "npm test",
     "version": "gulp minify && git add -A dist",
